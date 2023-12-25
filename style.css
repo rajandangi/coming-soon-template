@@ -106,9 +106,6 @@ svg {
     gap: 1rem;
 }
 
-.footer .container svg {
-    max-width: max-content;
-}
 
 @keyframes clockHand {
     from {
