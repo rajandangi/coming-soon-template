@@ -1,23 +1,207 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+:root {
+    --bs-primary: #0d6efd;
+    --bs-primary-rgb: 13, 110, 253;
+    --bs-secondary: #6c757d;
+    --bs-secondary-rgb: 108, 117, 125;
 }
 
-html {
-    font-size: 62.5%;
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.main-title h1 {
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.1),
+        4px 4px 0 rgba(0, 0, 0, 0.05);
+    letter-spacing: 2px;
+}
+
+.rounded-4 {
+    border-radius: 0.75rem !important;
+}
+
+.animated-image {
+    transition: transform 0.3s ease-in-out;
+}
+
+.animated-image:hover {
+    transform: scale(1.02);
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(var(--bs-primary-rgb), 0.15) !important;
+}
+
+/* Equal height columns */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+@media (max-width: 991.98px) {
+    .row > [class*='col-'] {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.btn-primary, .bg-primary {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.btn {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.btn-outline-primary {
+    border-width: 2px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Additional Styles */
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+    border-color: #86b7fe;
+}
+
+/* Custom Animation for Page Elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-title, .animated-image, .countdown-timer, form {
+    animation: fadeInUp 1s ease forwards;
 }
 
 .main-title {
-    text-shadow:
-        1px 0px 1px #ccc, 0px 1px 1px #eee,
-        2px 1px 1px #ccc, 1px 2px 1px #eee,
-        3px 2px 1px #ccc, 2px 3px 1px #eee,
-        4px 3px 1px #ccc, 3px 4px 1px #eee,
-        5px 4px 1px #ccc, 4px 5px 1px #eee,
-        6px 5px 1px #ccc, 5px 6px 1px #eee,
-        7px 6px 1px #ccc;
+    animation-delay: 0.2s;
+}
+
+.animated-image {
+    animation-delay: 0.5s;
+}
+
+.countdown-timer {
+    animation-delay: 0.8s;
+}
+
+form {
+    animation-delay: 1.1s;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .display-3 {
+        font-size: 2.5rem;
+    }
+    .display-6 {
+        font-size: 1.5rem;
+    }
+}
+
+/* SVG Animations */
+#clock {
+    animation: clockHand 5s infinite linear;
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+
+#leftTree,
+#righTree {
+    animation: tree 2s ease-in-out infinite alternate;
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+
+#man {
+    animation: manBody 1s ease-in-out infinite alternate;
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+
+#pc-circle {
+    fill: #6ace66;
+    stroke-width: 4;
+    animation: change-light 4s linear infinite alternate;
+}
+
+@keyframes clockHand {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(-360deg);
+    }
+}
+
+@keyframes manBody {
+    from {
+        transform: rotateX(0deg);
+    }
+
+    to {
+        transform: rotateX(10deg);
+    }
+}
+
+@keyframes tree {
+    from {
+        transform: rotateZ(10deg);
+    }
+
+    to {
+        transform: rotateZ(-20deg);
+    }
+}
+
+@keyframes change-light {
+    0% {
+        stroke: #cd61f8;
+    }
+
+    25% {
+        stroke: #6ace66;
+    }
+
+    75% {
+        stroke: #2995c0;
+    }
+
+    100% {
+        stroke: #e92949;
+    }
 }
 
 #clock {
