@@ -162,7 +162,7 @@ form {
     }
 
     to {
-        transform: rotateZ(-360deg);
+        transform: rotateZ(360deg);
     }
 }
 
@@ -234,8 +234,8 @@ form {
         transform: rotateZ(0deg);
     }
 
-    from {
-        transform: rotateZ(-360deg);
+    to {
+        transform: rotateZ(360deg);
     }
 }
 
