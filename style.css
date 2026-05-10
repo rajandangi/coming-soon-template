@@ -6,8 +6,20 @@ body {
     text-wrap: balance;
 }
 
+.site-nav {
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 1.75rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.52)),
+        linear-gradient(135deg, rgba(47, 157, 98, 0.08), rgba(243, 179, 61, 0.06));
+    box-shadow: 0 22px 58px rgba(15, 92, 168, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
 .hero-stage {
     position: relative;
+    isolation: isolate;
     min-height: 620px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.92);
@@ -27,6 +39,7 @@ body {
     content: "";
     position: absolute;
     inset: auto -12% -42% 42%;
+    z-index: 0;
     height: 72%;
     border-radius: 999px;
     background: rgba(15, 92, 168, 0.1);
@@ -37,6 +50,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
         linear-gradient(90deg, rgba(255, 255, 255, 0) 58%, rgba(255, 255, 255, 0.24) 100%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.5));
@@ -54,6 +68,11 @@ body {
     filter: drop-shadow(0 30px 56px rgba(15, 23, 42, 0.1)) saturate(1.02);
     transform-origin: bottom right;
     animation: floatArtwork 7s ease-in-out infinite;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .countdown-card {
@@ -95,6 +114,7 @@ body {
 
 .launch-note {
     letter-spacing: 0.01em;
+    flex-wrap: wrap;
 }
 
 .info-tile {
@@ -319,6 +339,32 @@ body {
 
     .countdown-card {
         min-height: 104px;
+    }
+
+    .launch-note {
+        width: fit-content;
+        max-width: 100%;
+        flex-wrap: nowrap;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+        padding: 0.72rem 0.9rem;
+        line-height: 1.25;
+        white-space: nowrap;
+    }
+
+    .launch-note span:first-child {
+        color: #64748b;
+        font-size: 0.76rem;
+        font-weight: 600;
+    }
+
+    .launch-note span:nth-child(2) {
+        flex: 0 0 auto;
+    }
+
+    .launch-note #launch-date-display {
+        font-size: 0.82rem;
     }
 }
 

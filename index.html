@@ -11,29 +11,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'ui-sans-serif', 'system-ui']
-                    },
-                    colors: {
-                        college: {
-                            blue: '#0f5ca8',
-                            navy: '#0b2239',
-                            green: '#2f9d62',
-                            gold: '#f3b33d'
-                        }
-                    },
-                    boxShadow: {
-                        glow: '0 24px 80px rgba(15, 92, 168, 0.18)'
-                    }
-                }
-            }
-        };
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: 'Poppins', ui-sans-serif, system-ui;
+            --color-college-blue: #0f5ca8;
+            --color-college-navy: #0b2239;
+            --color-college-green: #2f9d62;
+            --color-college-gold: #f3b33d;
+            --shadow-glow: 0 24px 80px rgba(15, 92, 168, 0.18);
+        }
+    </style>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -43,7 +31,7 @@
     </div>
 
     <header class="px-5 pt-5 lg:px-8">
-        <nav class="mx-auto flex max-w-7xl items-center justify-center rounded-[1.75rem] border border-white/85 bg-white/82 px-5 py-5 text-center shadow-xl shadow-slate-200/60 backdrop-blur-xl"
+        <nav class="site-nav mx-auto flex max-w-7xl items-center justify-center px-5 py-5 text-center"
             aria-label="Primary navigation">
             <a href="https://mbtcdang.edu.np"
                 class="group flex min-w-0 flex-col items-center gap-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-college-blue/20">
@@ -63,7 +51,7 @@
             <img src="dev_productivity_with_animations.svg" class="hero-illustration"
                 alt="" aria-hidden="true">
 
-            <div class="relative z-10 max-w-2xl">
+            <div class="hero-content relative z-10 max-w-2xl">
                 <div class="mb-7 inline-flex items-center gap-2 rounded-full bg-college-blue/10 px-4 py-2 text-sm font-semibold text-college-blue">
                     <span class="h-2 w-2 rounded-full bg-college-gold"></span>
                     Coming soon
