@@ -19,16 +19,33 @@ const formatLaunchDate = () => {
 
 // DOM ready function
 document.addEventListener('DOMContentLoaded', () => {
-    // Display the formatted launch date
-    document.getElementById('launch-date-display').textContent = formatLaunchDate();
+    const launchDateDisplay = document.getElementById('launch-date-display');
+    const currentYear = document.getElementById('current-year');
+    const daysDisplay = document.getElementById('days');
+    const hoursDisplay = document.getElementById('hours');
+    const minutesDisplay = document.getElementById('minutes');
+    const secondsDisplay = document.getElementById('seconds');
 
-    // Update the countdown every second
-    const countdown = setInterval(function () {
+    launchDateDisplay.textContent = formatLaunchDate();
+
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear().toString();
+    }
+
+    const updateCountdown = () => {
         // Get today's date and time
         const now = new Date().getTime();
 
         // Find the distance between now and the launch date
         const distance = launchDate - now;
+
+        if (distance < 0) {
+            daysDisplay.textContent = '00';
+            hoursDisplay.textContent = '00';
+            minutesDisplay.textContent = '00';
+            secondsDisplay.textContent = '00';
+            return false;
+        }
 
         // Time calculations for days, hours, minutes and seconds
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -37,18 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the results
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        daysDisplay.textContent = days.toString().padStart(2, '0');
+        hoursDisplay.textContent = hours.toString().padStart(2, '0');
+        minutesDisplay.textContent = minutes.toString().padStart(2, '0');
+        secondsDisplay.textContent = seconds.toString().padStart(2, '0');
 
+        return true;
+    };
+
+    updateCountdown();
+
+    // Update the countdown every second
+    const countdown = setInterval(function () {
         // If the countdown is finished, display a message
-        if (distance < 0) {
+        if (!updateCountdown()) {
             clearInterval(countdown);
-            document.getElementById('days').textContent = '00';
-            document.getElementById('hours').textContent = '00';
-            document.getElementById('minutes').textContent = '00';
-            document.getElementById('seconds').textContent = '00';
         }
     }, 1000);
 });
